@@ -1,3 +1,4 @@
+#__author__ = 'Sudhanshu Patel'
 __author__ = 'Sudhanshu Patel'
 
 def gcd(a, b):
@@ -6,10 +7,9 @@ def gcd(a, b):
     return b
 
 def findModInverse(a, m):
-    '''
-         finding the modular inverse just like there was for finding
-         the Greatest Common Divisor. Euclid’s Extended Algorithm
-    '''
+        # finding the modular inverse just like there was for finding
+        # the Greatest Common Divisor. Euclid's Extended Algorithm
+
     if gcd(a, m) != 1:
         return False # no mod inverse exists if a & m aren't relatively prime
     u1, u2, u3 = 1, 0, a
@@ -22,3 +22,6 @@ def findModInverse(a, m):
 def Maddinverse(A,M):
     ''' Additive Inverse '''
     return (M-A)%M
+
+if __name__=='__main__':
+    print "Hi I am imported"
