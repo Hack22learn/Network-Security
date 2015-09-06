@@ -14,3 +14,5 @@ Different Aspect of Network Security including basic  Crypto
 * Vigenere Cipher [Read More :](http://www.codecops.in/2015/08/vigenere-cipher.html) 
 * Permutation Cipher
 * Hill Cipher
+* Kasiski Test to guess blockSize of vigenere Cipher
+
