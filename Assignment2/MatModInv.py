@@ -18,6 +18,12 @@ def findModInverse(a, m):
         v1, v2, v3, u1, u2, u3 = (u1 - q * v1), (u2 - q * v2), (u3 - q * v3), v1, v2, v3
     return u1 % m
 
+def Matmodulo(mat,domain=26):
+	#replace each Element by its modulo with domain
+	for i in range(len(mat)):
+		for j in range(len(mat[i])):
+			mat[i][j]=round(mat[i][j])%domain
+	return mat
 
 def matrixModInv(mt):
     # return Matrix moduler Inverse
@@ -25,7 +31,6 @@ def matrixModInv(mt):
     mt=np.array(mt)
     #calculate adjoint
     detM=int(round(np.linalg.det(mt)))
-    print detM
     adj=np.linalg.inv(mt)*detM
 
     #data in adjoint are float convert them to int
@@ -34,7 +39,7 @@ def matrixModInv(mt):
             adj[i][j]=int(round(adj[i][j]))
     # Find Moduler Inverse of
     detI=findModInverse(abs(int(detM)), domain)
-    print "Moduler Inverse of det(M):",detI
+    #print "Moduler Inverse of det(M):",detI
     if detI:
             if detM >=0:
                 modI= adj*detI
@@ -44,11 +49,10 @@ def matrixModInv(mt):
         print "Moduler inverse does't exits"
         return False
 
-    #Taking additive moduler Inverse of all
-    for i in range(len(modI)):
-        for j in range(len(modI[i])):
-            modI[i][j]=int(modI[i][j]%domain)
-    return np.array(modI)
+    # replacing all by there modulo with domain 
+    modI=Matmodulo(modI,domain)
+    print "Moduler Inverse of Key Matrix:\n",modI
+    return modI
 
 if __name__=='__main__':
     mt=[[9,7,11,13],[4,7,5,6],[2,21,14,9],[3,23,21,8]]
