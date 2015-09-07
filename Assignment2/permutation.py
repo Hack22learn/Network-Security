@@ -5,11 +5,20 @@ __email__='query.b2cs@gmail.com'
 #Also Known As Keyd Transposition Cipher
 
 import numpy as np
-
-def EpermutationCipher(pMat,plainText , encription=True):
+import collections
+import string
+def EpermutationCipher(pMat,plainText , encryption=True):
     #return cipherText
     #return plain text
-    plainText=plainText.upper()
+
+    if encryption:
+        #basic plainText Preprocessing
+        plainText=plainText.upper()
+        for punc in string.punctuation:
+            plainText=plainText.replace(punc,'')
+        plainText=plainText.replace(' ','')
+        print 'PlainText after preProcessing :',plainText
+        
     def permutationEmatrix(pStream):
         #pStream -permutation stream
         #return permuation matrix
@@ -36,13 +45,22 @@ def EpermutationCipher(pMat,plainText , encription=True):
                 if ind<lp:
                     ptMat[i].append(ord(pText[ind])-ord('A'))
                     ind +=1
-                else: ptMat[i].append(0)
+                else: ptMat[i].append(ord('Z')-ord('A'))
             i+=1
         return ptMat
+    def decryptStream(pMat):
+        #return decrypt permutation
+        d = collections.defaultdict( int )
+        for i in range(len(pMat[0])):
+            d[pMat[0][i]]=pMat[1][i]
+        permutation=[]
+        for i in range(1,len(d)+1):
+            permutation.append(d[i])
+        return permutation
     
     #Chossing permutation Key based on Encription or decription process
-    if encription: pStream=pMat[0]
-    else: pStream=pMat[1]
+    if encryption: pStream=pMat[0]
+    else: pStream=decryptStream(pMat)
     
     l=len(pStream)
     #converting permutation in marix formate
@@ -70,10 +88,12 @@ def EpermutationCipher(pMat,plainText , encription=True):
 
 if __name__=='__main__':
     # initialise Permutation Matrix
-    pMat=[[3,1,4,5,2],[1,2,3,4,5]]
+    #pMat=[[1,2,3,4,5,6,7,8],[4,1,6,2,7,3,8,5]]
+    #plainText="TGEEMNELNNTDROEOAAHDOETCSHAEIRLM"
 
-    #initalise plain Text
+    pMat=[[3,1,4,5,2],[1,2,3,4,5]]
     plainText="enemyattackstonightz"
+    
     
     # Encyption
     print "\n\n Encrypting .\n.................."
@@ -83,7 +103,7 @@ if __name__=='__main__':
     
     print "\n\nNow Decrypting .\n.................."
     # Decryption
-    decrypt=EpermutationCipher(pMat,plainText,False)
+    decrypt=EpermutationCipher(pMat,Encrypt,False)
     print "\n\nDecrypted Text :",decrypt
                          
                          
