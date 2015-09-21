@@ -16,3 +16,6 @@ Different Aspect of Network Security including basic  Crypto
 * Hill Cipher
 * Kasiski Test to guess blockSize of vigenere Cipher
 
+#Assignment_3
+* DES 
+
