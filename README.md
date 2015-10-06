@@ -19,3 +19,11 @@ Different Aspect of Network Security including basic  Crypto
 #Assignment_3
 * DES 
 
+#Assignment_4
+* Euclidean Algorithm
+* Extended Euclidean Algorithm
+* Chinese Remainder Theorem
+
+
+[Fallow blog:](http://www.codecops.in/)
+[Fallow on Facebook :](https://www.facebook.com/codecops)
