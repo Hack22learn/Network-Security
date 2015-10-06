@@ -25,5 +25,5 @@ Different Aspect of Network Security including basic  Crypto
 * Chinese Remainder Theorem
 
 
-[Fallow blog:](http://www.codecops.in/)
-[Fallow on Facebook :](https://www.facebook.com/codecops)
+** [our blog:](http://www.codecops.in/)
+** [Facebook :](https://www.facebook.com/codecops)
